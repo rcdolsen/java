@@ -10,8 +10,8 @@ public class Student extends MakeStudentAttributes {
 
         student1 = fillValue("Ricardo", 37, 8, 10, 15);
         student2 = fillValue("Theo", 2, 20, 15, 18);
-        student3 = fillValue("Mozuda", 38, 8, 0, 2.5f);
-        student3 = fillValue("Test", 0, 9.99F, 9.99f, 9.99f);
+        student3 = fillValue("Mozuda", 38, 8, 0, 2.5);
+        student3 = fillValue("Test", 0, 9.999999, 9.99, 9.99);
 
     }
 }
