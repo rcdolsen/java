@@ -4,42 +4,51 @@ import java.util.Arrays;
 
 public class MakeStudentAttributes {
 
-    public String name;
-    public int age;
-    public double[] grades = new double[3];
-    public double average;
-    public String situation;
+    private String name;
+    private int age;
+    private double[] grades = new double[] {0, 0, 0};
+    private double average;
+    private String situation;
 
-    protected static Student fillValue(String name, int age, double grade1, double grade2, double grade3) {
-        Student student = new Student();
+    public MakeStudentAttributes(String name, int age, double grade1, double grade2, double grade3) {
 
-        student.name = name;
-        System.out.println("name: " + name);
-        student.age = age;
-        System.out.println("age: " + age);
-        student.grades[0] = grade1;
-        student.grades[1] = grade2;
-        student.grades[2] = grade3;
-        System.out.println(Arrays.toString(student.grades));
-
-        student.average = Math.round(student.average() * 100.0) / 100.0;
-        System.out.println("Average grade: " + student.average);
-
-        student.situation = student.situation(student.average);
-        System.out.println("Situation: " + student.situation);
-
-        System.out.println();
-        return student;
+//        stores the data parsed in the object attributes
+        this.name = name;
+        this.age = age;
+        this.grades = new double[]{grade1, grade2, grade3};
+        this.average = Math.round(this.average() * 10.0) / 10.0;
+        this.situation = this.situation(this.average);
     }
 
+    //    iterates over the grades in the list and returns the average grade to the object`s average attribute
     protected double average() {
-        return (grades[0] + grades[1] + grades[2])/3;
+        double average = 0;
+        int i = 0;
+
+        for (double grade : grades) {
+            average += grade;
+            i++;
+        }
+        if (i > 0) return average / i;
+        else return 0;
     }
 
+    //    Uses the average grade to show if the student has passed or failed
     protected String situation(double grade) {
         if (grade < 10) {
             return "failed";
         }
         return "passed";
+    }
+
+    //    Method to show the students stored info
+    protected void showInfo() {
+        System.out.println("name: " + name);
+        System.out.println("age: " + age);
+        System.out.println(Arrays.toString(this.grades));
+        System.out.println("Average rounded grade: " + this.average);
+        System.out.println("Situation: " + this.situation);
+
+        System.out.println();
     }
 }
