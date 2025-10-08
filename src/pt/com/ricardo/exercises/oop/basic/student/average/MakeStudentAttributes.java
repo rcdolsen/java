@@ -8,9 +8,9 @@ public class MakeStudentAttributes {
     private int age;
     private double[] grades = new double[]{0, 0, 0};
     private double average;
-    private String situation;
+    private boolean situation;
 
-//    getters and setters start
+    //    getters and setters start
     public void setName(String name) {
         this.name = name;
     }
@@ -35,7 +35,7 @@ public class MakeStudentAttributes {
         return grades;
     }
 
-    public void setAverage(double average) {
+    private void setAverage(double average) {
         this.average = average;
     }
 
@@ -43,11 +43,11 @@ public class MakeStudentAttributes {
         return average;
     }
 
-    public void setSituation(String situation) {
+    private void setSituation(boolean situation) {
         this.situation = situation;
     }
 
-    public String getSituation() {
+    public boolean isSituation() {
         return situation;
     }
 //    getters and setters end
@@ -77,11 +77,11 @@ public class MakeStudentAttributes {
     }
 
     //    Uses the average grade to show if the student has passed or failed
-    protected String determineSituation(double grade) {
+    protected boolean determineSituation(double grade) {
         if (grade < 10) {
-            return "failed";
+            return false;
         }
-        return "passed";
+        return true;
     }
 
     // Show all student info
@@ -90,7 +90,8 @@ public class MakeStudentAttributes {
         System.out.println("age: " + this.getAge());
         System.out.println(Arrays.toString(this.getGrades()));
         System.out.println("Average rounded grade: " + this.getAverage());
-        System.out.println("Situation: " + this.getSituation());
+        if (this.isSituation()) System.out.println("Situation: passed");
+        else System.out.println("Situation: failed");
         System.out.println();
     }
 }
