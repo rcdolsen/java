@@ -5,6 +5,7 @@ import java.util.Arrays;
 public class MakeStudentAttributes {
 
     private String name;
+    private String studentNumber;
     private int age;
     private double[] grades = new double[]{0, 0, 0};
     private double average;
@@ -50,6 +51,15 @@ public class MakeStudentAttributes {
     public boolean isSituation() {
         return situation;
     }
+
+    public void setStudentNumber(String studentNumber) {
+        this.studentNumber = studentNumber;
+    }
+
+    public String getStudentNumber() {
+        return studentNumber;
+    }
+
 //    getters and setters end
 
     public MakeStudentAttributes(String name, int age, double grade1, double grade2, double grade3) {
@@ -60,6 +70,17 @@ public class MakeStudentAttributes {
         this.setGrades(new double[]{grade1, grade2, grade3});
         this.setAverage(Math.round(this.calculateAverage() * 10.0) / 10.0);
         this.setSituation(this.determineSituation(this.average));
+    }
+
+    public MakeStudentAttributes(String name, String studentNumber) {
+        this.setName(name);
+        this.setStudentNumber(studentNumber);
+    }
+
+    public MakeStudentAttributes(String name, int age, double grade1, double grade2, double grade3, String studentNumber) {
+        this(name, age, grade1, grade2, grade3);
+        this.setStudentNumber(studentNumber);
+
     }
 
     //    iterates over the grades in the list and returns the average grade to the object`s average attribute
@@ -87,6 +108,7 @@ public class MakeStudentAttributes {
     // Show all student info
     public void showInfo() {
         System.out.println("name: " + this.getName());
+        System.out.println("Student number: " + this.getStudentNumber());
         System.out.println("age: " + this.getAge());
         System.out.println(Arrays.toString(this.getGrades()));
         System.out.println("Average rounded grade: " + this.getAverage());
